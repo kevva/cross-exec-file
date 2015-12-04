@@ -50,6 +50,12 @@ Default: `node`
 
 A custom path to a `node` executable.
 
+#### callback(err, stdout, stderr)
+
+Type: `function`
+
+Returns the output from your binary.
+
 
 ## License
 
