@@ -28,6 +28,10 @@
     "process",
     "windows"
   ],
+  "dependencies": {
+    "read-chunk": "^1.0.1",
+    "shebang-command": "^1.0.0"
+  },
   "devDependencies": {
     "ava": "*",
     "pify": "^2.3.0",

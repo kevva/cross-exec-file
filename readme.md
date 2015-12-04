@@ -43,13 +43,6 @@ Arguments to run your binary with.
 
 Provide options to be used with [`execFile`](https://nodejs.org/api/child_process.html#child_process_child_process_execfile_file_args_options_callback)
 
-##### path
-
-Type: `string`
-Default: `node`
-
-A custom path to a `node` executable.
-
 #### callback(err, stdout, stderr)
 
 Type: `function`
