@@ -3,7 +3,12 @@ import pify from 'pify';
 import test from 'ava';
 import fn from './';
 
-test(async t => {
+test('node', async t => {
 	const data = await pify(fn)(path.join(__dirname, 'fixture.js'));
+	t.is(data.trim(), 'unicorns and cats');
+});
+
+test('bash', async t => {
+	const data = await pify(fn)(path.join(__dirname, 'fixture.sh'));
 	t.is(data.trim(), 'unicorns and cats');
 });
