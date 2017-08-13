@@ -1,14 +1,13 @@
 import path from 'path';
-import pify from 'pify';
 import test from 'ava';
-import fn from './';
+import m from '.';
 
 test('node', async t => {
-	const data = await pify(fn)(path.join(__dirname, 'fixture.js'));
-	t.is(data.trim(), 'unicorns and cats');
+	const {stdout} = await m(path.join(__dirname, 'fixture.js'));
+	t.is(stdout, 'unicorns and cats');
 });
 
 test('bash', async t => {
-	const data = await pify(fn)(path.join(__dirname, 'fixture.sh'));
-	t.is(data.trim(), 'unicorns and cats');
+	const {stdout} = await m(path.join(__dirname, 'fixture.sh'));
+	t.is(stdout, 'unicorns and cats');
 });

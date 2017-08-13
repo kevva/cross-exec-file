@@ -1,31 +1,26 @@
 'use strict';
-var childProcess = require('child_process');
-var readChunk = require('read-chunk');
-var shebangCommand = require('shebang-command');
+const childProcess = require('child_process');
+const pify = require('pify');
+const readChunk = require('read-chunk');
+const shebangCommand = require('shebang-command');
 
-module.exports = function (bin, args, opts, cb) {
-	opts = opts || {};
+module.exports = (bin, args, opts) => {
+	args = Array.isArray(args) ? args : [];
+	opts = Object.assign({}, opts);
 
-	if (typeof args === 'function') {
-		cb = args;
-		opts = {};
-		args = [];
-	}
+	return readChunk(bin, 0, 150)
+		.then(buf => shebangCommand(buf.toString()))
+		.then(cmd => {
+			const execFileP = pify(childProcess.execFile, {multiArgs: true});
+			const binary = cmd ? cmd : bin;
 
-	if (typeof opts === 'function') {
-		cb = opts;
-		opts = {};
-	}
+			if (cmd) {
+				args.splice(0, 0, bin);
+			}
 
-	readChunk(bin, 0, 150, function (err, buf) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		var cmd = shebangCommand(buf.toString());
-
-		args.unshift(bin);
-		childProcess.execFile(cmd, args, opts, cb);
-	});
+			return execFileP(binary, args, opts).then(res => ({
+				stdout: res[0].trim(),
+				stderr: res[1].trim()
+			}));
+		});
 };

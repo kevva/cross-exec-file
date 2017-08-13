@@ -1,45 +1,40 @@
 {
-  "name": "cross-exec-file",
-  "version": "1.0.0",
-  "description": "Cross platform `execFile`",
-  "license": "MIT",
-  "repository": "kevva/cross-exec-file",
-  "author": {
-    "name": "Kevin Martensson",
-    "email": "kevinmartensson@gmail.com",
-    "url": "github.com/kevva"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "xo && ava"
-  },
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "cross",
-    "exec",
-    "file",
-    "linux",
-    "osx",
-    "platform",
-    "process",
-    "windows"
-  ],
-  "dependencies": {
-    "read-chunk": "^1.0.1",
-    "shebang-command": "^1.0.0"
-  },
-  "devDependencies": {
-    "ava": "*",
-    "pify": "^2.3.0",
-    "xo": "*"
-  },
-  "xo": {
-    "ignores": [
-      "test.js"
-    ]
-  }
+	"name": "cross-exec-file",
+	"version": "1.0.0",
+	"description": "Cross platform `execFile`",
+	"license": "MIT",
+	"repository": "kevva/cross-exec-file",
+	"author": {
+		"name": "Kevin Martensson",
+		"email": "kevinmartensson@gmail.com",
+		"url": "github.com/kevva"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"cross",
+		"exec",
+		"file",
+		"linux",
+		"osx",
+		"platform",
+		"process",
+		"windows"
+	],
+	"dependencies": {
+		"pify": "^3.0.0",
+		"read-chunk": "^2.1.0",
+		"shebang-command": "^1.0.0"
+	},
+	"devDependencies": {
+		"ava": "*",
+		"xo": "*"
+	}
 }

@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save cross-exec-file
+$ npm install cross-exec-file
 ```
 
 
@@ -15,8 +15,8 @@ $ npm install --save cross-exec-file
 ```js
 const crossExecFile = require('cross-exec-file');
 
-crossExecFile('cli.js', ['unicorn'], (err, stdout, stderr) => {
-	console.log(stdout);
+crossExecFile('cli.js', ['unicorn']).then(res) => {
+	console.log(res.stdout);
 	//=> 'unicorns & rainbows'
 });
 ```
@@ -24,32 +24,35 @@ crossExecFile('cli.js', ['unicorn'], (err, stdout, stderr) => {
 
 ## API
 
-### crossExecFile(bin, [args], [options], callback)
+### crossExecFile(bin, [args], [options])
+
+Returns a `Promise` for a result `Object` with `stdout` and `stderr` properties.
 
 #### bin
 
-*Required*  
 Type: `string`
 
 Path to your binary to be ran.
 
 #### args
 
-Type: `array`
+Type: `Array`
 
 Arguments to run your binary with.
 
 #### options
 
+Type: `Object`
+
 Provide options to be used with [`execFile`](https://nodejs.org/api/child_process.html#child_process_child_process_execfile_file_args_options_callback)
 
-#### callback(err, stdout, stderr)
 
-Type: `function`
+## Related
 
-Returns the output from your binary.
+* [execa](https://github.com/sindresorhus/execa) - A better `child_process`
+* [cross-spawn](https://github.com/IndigoUnited/node-cross-spawn) - A cross platform solution to node's `spawn` and `spawnSync`
 
 
 ## License
 
-MIT © [Kevin Martensson](http://github.com/kevva)
+MIT © [Kevin Martensson](https://github.com/kevva)
